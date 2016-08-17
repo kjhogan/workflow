@@ -71,16 +71,6 @@ var pixgrid = function() {
         }, !1);
     }
 }();
-$(function() {
-  var Mustache = require('mustache');
- 
-  $.getJSON('js/data.json', function(data) {
-    var template = $('#speakerstpl').html();
-    var html = Mustache.to_html(template, data);
-    $('#speakers').html(html);    
-  }); //getJSON
-  
-}); //function
 var $, fill;
 
 $ = require('jquery');
@@ -91,6 +81,16 @@ $ = require('jquery');
 
 fill;
 
+$(function() {
+  var Mustache = require('mustache');
+ 
+  $.getJSON('js/data.json', function(data) {
+    var template = $('#speakerstpl').html();
+    var html = Mustache.to_html(template, data);
+    $('#speakers').html(html);    
+  }); //getJSON
+  
+}); //function
 },{"jquery":2,"mustache":3}],2:[function(require,module,exports){
 /*eslint-disable no-unused-vars*/
 /*!

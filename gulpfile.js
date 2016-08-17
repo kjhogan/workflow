@@ -9,8 +9,8 @@ var coffeeSource = ['components/coffee/tagline.coffee']
 
 var jsSource = ['components/scripts/rclick.js',
                'components/scripts/pixgrid.js',
-               'components/scripts/template.js',
-               'components/scripts/tagline.js']
+                'components/scripts/tagline.js',
+               'components/scripts/template.js']
 
 var sassSource = ['components/sass/style.scss']
 
