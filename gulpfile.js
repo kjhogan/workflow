@@ -25,8 +25,9 @@ gulp.task('coffee', function() {
 gulp.task('js', function() {
     gulp.src(jsSource)
         .pipe(concat('script.js'))
-        .pipe(browserify())
-        .pipe(gulp.dest('builds/development/js'))
+    .pipe(browserify())
+    .pipe(gulp.dest('builds/development/js'))
+    .pipe(connect.reload())
 });
 
 gulp.task('compass', function() {
