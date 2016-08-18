@@ -15,6 +15,10 @@ var jsSource = ['components/scripts/rclick.js',
 
 var sassSource = ['components/sass/style.scss']
 
+var htmlSource = ['builds/development/*html']
+
+var jsonSource = ['builds/development/js/*.json']
+
 gulp.task('coffee', function() {
     gulp.src(coffeeSource)
         .pipe(coffee({bare: true})
@@ -39,19 +43,32 @@ gulp.task('compass', function() {
         })
         .on('error', gutil.log))
         .pipe(gulp.dest('builds/development/css'))
+        .pipe(connect.reload())
 });
 
 gulp.task('watch', function() {
     gulp.watch(coffeeSource, ['coffee']);
     gulp.watch(jsSource, ['js']);
     gulp.watch('components/sass/*scss', ['compass']);
+    gulp.watch(htmlSources, ['html']);
+    gulp.watch(jsonSource, ['json']);
 });
 
-gulp.task('default', ['coffee', 'js', 'compass', 'watch', 'connect']);
+gulp.task('default', ['coffee', 'js', 'json' 'compass', 'watch', 'connect', 'html']);
 
 gulp.task('connect', function(){
     connect.server({
         root: 'builds/development',
         livereload: true
     })
+});
+
+gulp.task('html', function(){
+    gulp.src('htmlSource')
+    .pipe(connect.reload())
+});
+
+gulp.task('json', function(){
+    gulp.src(jsonSource)
+        .pipe(connect.reload())
 });
